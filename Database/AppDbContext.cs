@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Inventory_Manager.Models.Categories;
+using Inventory_Manager.Models.Products;
 
 namespace Inventory_Manager.Database;
 
@@ -18,7 +19,9 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Category>().HasIndex(x => x.CreatedAt);
+        modelBuilder.Entity<Product>().HasIndex(x => x.CreatedAt);
     }
 
-    public DbSet<Category> Movies { get; set; }
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<Product> Products { get; set; }
 }
